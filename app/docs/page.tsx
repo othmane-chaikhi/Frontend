@@ -1,3 +1,5 @@
+'use client';
+
 import { useState } from 'react';
 import { 
   FiBook, FiCode, FiTool, FiZap, FiCheckCircle, 
@@ -5,13 +7,7 @@ import {
 } from 'react-icons/fi';
 import { generateMetadata, pageSEO } from '@/lib/seo';
 
-// SEO metadata for docs page
-export const metadata = generateMetadata({
-  title: pageSEO.docs.title,
-  description: pageSEO.docs.description,
-  keywords: pageSEO.docs.keywords,
-  url: '/docs',
-});
+// SEO metadata is handled by layout.tsx
 
 type Language = 'fr' | 'en' | 'ar';
 
@@ -828,8 +824,6 @@ const content = {
     }
   }
 };
-
-'use client';
 
 export default function DocsPage() {
   const [lang, setLang] = useState<Language>('fr');

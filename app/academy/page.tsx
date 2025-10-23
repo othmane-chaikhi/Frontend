@@ -1,3 +1,5 @@
+'use client';
+
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
@@ -10,13 +12,7 @@ import { academyAPI } from '@/lib/api';
 import Loading from '@/components/Loading';
 import { generateMetadata, pageSEO } from '@/lib/seo';
 
-// SEO metadata for academy page
-export const metadata = generateMetadata({
-  title: pageSEO.academy.title,
-  description: pageSEO.academy.description,
-  keywords: pageSEO.academy.keywords,
-  url: '/academy',
-});
+// SEO metadata is handled by layout.tsx
 
 interface Course {
   id: number;
@@ -41,8 +37,6 @@ interface Course {
   created_at: string;
   updated_at: string;
 }
-
-'use client';
 
 export default function AcademyPage() {
   const router = useRouter();
