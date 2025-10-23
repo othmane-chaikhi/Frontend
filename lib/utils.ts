@@ -44,6 +44,14 @@ export function truncateText(text: string, maxLength: number): string {
 export function getMediaUrl(path: string | null): string | null {
   if (!path) return null;
   if (path.startsWith('http')) return path;
-  return `${process.env.NEXT_PUBLIC_API_URL?.replace('/api', '')}${path}`;
+  
+  // Temporary solution: use placeholder images until backend is deployed
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL?.replace('/api', '');
+  if (!apiUrl || apiUrl.includes('localhost')) {
+    // Use placeholder images for localhost/undeployed backend
+    return `https://via.placeholder.com/800x600/4F46E5/FFFFFF?text=Image+Placeholder`;
+  }
+  
+  return `${apiUrl}${path}`;
 }
 

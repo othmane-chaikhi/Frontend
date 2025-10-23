@@ -1,7 +1,13 @@
 import axios from 'axios';
+import { mockPosts, mockSiteConfig } from './mockData';
 
 // ✅ Use environment variable for flexibility
 const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
+
+// Check if we're in production and backend is not deployed
+const isProduction = process.env.NODE_ENV === 'production';
+const isLocalhostBackend = API_URL.includes('localhost');
+const shouldUseMockData = isProduction && isLocalhostBackend;
 
 // Export pour utilisation dans d'autres fichiers
 export const API_BASE_URL = API_URL;
@@ -75,8 +81,20 @@ export const authAPI = {
 };
 
 export const postsAPI = {
-  list: (params?: any) => api.get('/api/posts/', { params }),
-  get: (id: number) => api.get(`/api/posts/${id}/`),
+  list: async (params?: any) => {
+    if (shouldUseMockData) {
+      // Return mock data when backend is not available
+      return { data: { results: mockPosts, count: mockPosts.length } };
+    }
+    return api.get('/api/posts/', { params });
+  },
+  get: async (id: number) => {
+    if (shouldUseMockData) {
+      const post = mockPosts.find(p => p.id === id);
+      return { data: post || null };
+    }
+    return api.get(`/api/posts/${id}/`);
+  },
   create: (data: FormData) => api.post('/api/posts/', data, {
     headers: { 'Content-Type': 'multipart/form-data' },
   }),
@@ -84,8 +102,18 @@ export const postsAPI = {
     headers: { 'Content-Type': 'multipart/form-data' },
   }),
   delete: (id: number) => api.delete(`/api/posts/${id}/`),
-  recent: () => api.get('/api/posts/recent/'),
-  stats: () => api.get('/api/posts/stats/'),
+  recent: async () => {
+    if (shouldUseMockData) {
+      return { data: mockPosts.slice(0, 3) };
+    }
+    return api.get('/api/posts/recent/');
+  },
+  stats: async () => {
+    if (shouldUseMockData) {
+      return { data: { total_posts: mockPosts.length, published_posts: mockPosts.length } };
+    }
+    return api.get('/api/posts/stats/');
+  },
 };
 
 export const commentsAPI = {
@@ -104,7 +132,12 @@ export const profileAPI = {
 };
 
 export const siteConfigAPI = {
-  get: () => api.get('/api/site-config/current/'),
+  get: async () => {
+    if (shouldUseMockData) {
+      return { data: mockSiteConfig };
+    }
+    return api.get('/api/site-config/current/');
+  },
   update: (id: number, data: any) => {
     // If data is FormData, use multipart/form-data, otherwise use JSON
     if (data instanceof FormData) {
