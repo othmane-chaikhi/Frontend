@@ -1,5 +1,3 @@
-'use client';
-
 import { useState } from 'react';
 import { 
   FiBook, FiCode, FiTool, FiZap, FiCheckCircle, 
@@ -830,6 +828,8 @@ const content = {
     }
   }
 };
+
+'use client';
 
 export default function DocsPage() {
   const [lang, setLang] = useState<Language>('fr');

@@ -1,5 +1,3 @@
-'use client';
-
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
@@ -43,6 +41,8 @@ interface Course {
   created_at: string;
   updated_at: string;
 }
+
+'use client';
 
 export default function AcademyPage() {
   const router = useRouter();

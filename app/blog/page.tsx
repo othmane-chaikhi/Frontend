@@ -1,5 +1,3 @@
-'use client';
-
 import { useState, useEffect } from 'react';
 import { postsAPI } from '@/lib/api';
 import { Post, PaginatedResponse } from '@/lib/types';
@@ -15,6 +13,8 @@ export const metadata = generateMetadata({
   keywords: pageSEO.blog.keywords,
   url: '/blog',
 });
+
+'use client';
 
 export default function BlogPage() {
   const [posts, setPosts] = useState<Post[]>([]);
