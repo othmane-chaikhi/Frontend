@@ -1,0 +1,4 @@
+NEXT_PUBLIC_API_URL=https://jsonplaceholder.typicode.com
+NODE_VERSION=18
+NEXT_PUBLIC_SITE_URL=https://othmane-coding-academy-v2.vercel.app
+NODE_ENV=production

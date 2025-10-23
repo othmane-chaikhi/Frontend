@@ -1,0 +1,8 @@
+NEXT_PUBLIC_API_URL=http://localhost:8000/api
+NODE_VERSION=18
+NEXT_PUBLIC_SITE_URL=https://othmane-coding-academy-v2.vercel.app
+NODE_ENV=production
+
+NODE_VERSION=18
+NEXT_PUBLIC_SITE_URL=https://othmane-chaikhi.netlify.app
+NODE_ENV=production
