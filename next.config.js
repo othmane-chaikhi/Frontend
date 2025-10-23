@@ -23,9 +23,9 @@ const nextConfig = {
   poweredByHeader: false,
   generateEtags: true,
   trailingSlash: false,
-  experimental: {
-    optimizeCss: true,
-  },
+      experimental: {
+        // optimizeCss: true, // Disabled due to missing critters module
+      },
   async headers() {
     return [
       {

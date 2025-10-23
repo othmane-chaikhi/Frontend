@@ -214,7 +214,7 @@ export default function CourseExercisePageEnhanced() {
       
       // For HTML/CSS, use preview mode
       if (['html', 'css'].includes(language)) {
-        handlePreview();
+        setCodeOutput('✅ HTML/CSS code ready for preview!\n');
         setRunning(false);
         return;
       }

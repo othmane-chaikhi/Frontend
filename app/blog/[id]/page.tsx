@@ -87,13 +87,13 @@ export default function PostDetailPage({ params }: PageProps) {
       {post && (
         <SEOHead
           title={post.title}
-          description={post.excerpt || post.content.substring(0, 160)}
+          description={post.content.substring(0, 160)}
           url={`/blog/${post.id}`}
-          image={post.media_url}
+          image={post.media || undefined}
           publishedTime={post.created_at}
           modifiedTime={post.updated_at}
           author="Othmane Chaikhi"
-          tags={post.tags || []}
+          tags={[]}
           breadcrumbs={[
             { name: 'Accueil', url: '/' },
             { name: 'Blog', url: '/blog' },

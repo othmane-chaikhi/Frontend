@@ -49,7 +49,7 @@ interface HomeContent {
 interface Skill {
   name: string;
   level: number;
-  icon: string;
+  icon: React.ReactElement;
   color: string;
 }
 

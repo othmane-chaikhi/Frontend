@@ -586,6 +586,100 @@ const content = {
         { method: "GET", path: "/academy/exercises/{id}/solution/", desc: "View solution" },
         { method: "GET", path: "/academy/progress/", desc: "User progress" },
       ]
+    },
+    
+    dynamic: {
+      title: "100% Dynamic Management",
+      subtitle: "Everything is configurable from the Admin Dashboard",
+      intro: "This platform is entirely dynamic. Every text, every skill, every course can be modified directly from the administration interface, without touching a single line of code!",
+      sections: [
+        {
+          title: "Text Content",
+          icon: "📝",
+          features: [
+            "All homepage texts are editable",
+            "Customizable descriptions, titles, subtitles",
+            "Configurable social links (GitHub, LinkedIn)",
+            "Editable contact email",
+            "Uploadable and replaceable CV at any time"
+          ]
+        },
+        {
+          title: "Skills (Skills)",
+          icon: "⚡",
+          features: [
+            "Add/remove skills dynamically",
+            "Adjust proficiency levels",
+            "Automatic display with progress bars"
+          ]
+        },
+        {
+          title: "Blog",
+          icon: "📰",
+          features: [
+            "Create/edit/delete articles",
+            "Upload images and videos",
+            "Integrated search and filtering"
+          ]
+        },
+        {
+          title: "Academy",
+          icon: "🎓",
+          features: [
+            "Create courses and lessons",
+            "Add interactive exercises",
+            "Multi-language support (Python, JS, C++, Java, SQL...)"
+          ]
+        },
+        {
+          title: "Media",
+          icon: "🖼️",
+          features: [
+            "Upload and manage images",
+            "Video integration",
+            "Automatic optimization"
+          ]
+        }
+      ],
+      advantages: {
+        title: "Advantages",
+        items: [
+          {
+            title: "No code required",
+            desc: "Edit everything from the admin interface. No need to know React or Django!"
+          },
+          {
+            title: "Instant updates",
+            desc: "Changes are visible immediately after saving"
+          },
+          {
+            title: "Multi-user",
+            desc: "Multiple admins can manage content simultaneously"
+          },
+          {
+            title: "Modification history",
+            desc: "Django keeps track of all changes"
+          },
+          {
+            title: "Automatic validation",
+            desc: "Forms automatically check data validity"
+          },
+          {
+            title: "Preview",
+            desc: "See changes before publishing"
+          }
+        ]
+      },
+      howto: {
+        title: "How to use the Admin Dashboard",
+        steps: [
+          "1. Access /admin with your credentials",
+          "2. Navigate to the desired section (Posts, Skills, etc.)",
+          "3. Click 'Add' to create new content",
+          "4. Fill in the form with your content",
+          "5. Save and see the changes live on the site"
+        ]
+      }
     }
   },
   
@@ -821,6 +915,100 @@ const content = {
         { method: "GET", path: "/academy/exercises/{id}/solution/", desc: "عرض الحل" },
         { method: "GET", path: "/academy/progress/", desc: "تقدم المستخدم" },
       ]
+    },
+    
+    dynamic: {
+      title: "إدارة ديناميكية 100%",
+      subtitle: "كل شيء قابل للتكوين من لوحة الإدارة",
+      intro: "هذه المنصة ديناميكية بالكامل. كل نص، كل مهارة، كل دورة يمكن تعديلها مباشرة من واجهة الإدارة، دون لمس سطر واحد من الكود!",
+      sections: [
+        {
+          title: "المحتوى النصي",
+          icon: "📝",
+          features: [
+            "جميع نصوص الصفحة الرئيسية قابلة للتعديل",
+            "أوصاف وعناوين وعناوين فرعية قابلة للتخصيص",
+            "روابط اجتماعية قابلة للتكوين (GitHub، LinkedIn)",
+            "بريد إلكتروني للتواصل قابل للتعديل",
+            "سيرة ذاتية قابلة للرفع والاستبدال في أي وقت"
+          ]
+        },
+        {
+          title: "المهارات",
+          icon: "⚡",
+          features: [
+            "إضافة/إزالة المهارات ديناميكياً",
+            "تعديل مستويات الكفاءة",
+            "عرض تلقائي مع أشرطة التقدم"
+          ]
+        },
+        {
+          title: "المدونة",
+          icon: "📰",
+          features: [
+            "إنشاء/تحرير/حذف المقالات",
+            "رفع الصور ومقاطع الفيديو",
+            "بحث وتصفية متكاملة"
+          ]
+        },
+        {
+          title: "الأكاديمية",
+          icon: "🎓",
+          features: [
+            "إنشاء الدورات والدروس",
+            "إضافة التمارين التفاعلية",
+            "دعم متعدد اللغات (Python، JS، C++، Java، SQL...)"
+          ]
+        },
+        {
+          title: "الوسائط",
+          icon: "🖼️",
+          features: [
+            "رفع وإدارة الصور",
+            "تكامل الفيديو",
+            "تحسين تلقائي"
+          ]
+        }
+      ],
+      advantages: {
+        title: "المزايا",
+        items: [
+          {
+            title: "لا حاجة للكود",
+            desc: "عدّل كل شيء من واجهة الإدارة. لا حاجة لمعرفة React أو Django!"
+          },
+          {
+            title: "تحديثات فورية",
+            desc: "التغييرات مرئية فوراً بعد الحفظ"
+          },
+          {
+            title: "متعدد المستخدمين",
+            desc: "عدة مدراء يمكنهم إدارة المحتوى في نفس الوقت"
+          },
+          {
+            title: "تاريخ التعديلات",
+            desc: "Django يحتفظ بسجل جميع التغييرات"
+          },
+          {
+            title: "التحقق التلقائي",
+            desc: "النماذج تتحقق تلقائياً من صحة البيانات"
+          },
+          {
+            title: "معاينة",
+            desc: "شاهد التغييرات قبل النشر"
+          }
+        ]
+      },
+      howto: {
+        title: "كيفية استخدام لوحة الإدارة",
+        steps: [
+          "1. الوصول إلى /admin ببيانات الاعتماد الخاصة بك",
+          "2. التنقل إلى القسم المطلوب (المقالات، المهارات، إلخ)",
+          "3. النقر على 'إضافة' لإنشاء محتوى جديد",
+          "4. ملء النموذج بمحتواك",
+          "5. الحفظ ومشاهدة التغييرات مباشرة على الموقع"
+        ]
+      }
     }
   }
 };
@@ -1029,19 +1217,19 @@ export default function DocsPage() {
                 {/* Header */}
                 <div className="bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-900/30 dark:to-emerald-900/30 rounded-xl shadow-lg p-8">
                   <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">
-                    {t.dynamic.title}
+                    {t.dynamic?.title || "Dynamic Management"}
                   </h2>
                   <p className="text-lg text-gray-600 dark:text-gray-300 mb-4">
-                    {t.dynamic.subtitle}
+                    {t.dynamic?.subtitle || "Everything is configurable from the Admin Dashboard"}
                   </p>
                   <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-                    {t.dynamic.intro}
+                    {t.dynamic?.intro || "This platform is entirely dynamic. Every text, every skill, every course can be modified directly from the administration interface, without touching a single line of code!"}
                   </p>
                 </div>
 
                 {/* Management Sections */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  {t.dynamic.sections.map((section, idx) => (
+                  {(t.dynamic?.sections || []).map((section, idx) => (
                     <div key={idx} className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow">
                       <div className="text-4xl mb-4">{section.icon}</div>
                       <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">
@@ -1062,10 +1250,10 @@ export default function DocsPage() {
                 {/* Advantages */}
                 <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8">
                   <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
-                    {t.dynamic.advantages.title}
+                    {t.dynamic?.advantages?.title || "Advantages"}
                   </h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {t.dynamic.advantages.items.map((item, idx) => (
+                    {(t.dynamic?.advantages?.items || []).map((item, idx) => (
                       <div key={idx} className="bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 rounded-lg p-6">
                         <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
                           {item.title}
@@ -1081,10 +1269,10 @@ export default function DocsPage() {
                 {/* How to use */}
                 <div className="bg-gradient-to-br from-blue-50 to-cyan-50 dark:from-blue-900/30 dark:to-cyan-900/30 rounded-xl shadow-lg p-8">
                   <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
-                    {t.dynamic.howto.title}
+                    {t.dynamic?.howto?.title || "How to Use"}
                   </h3>
                   <div className="space-y-3">
-                    {t.dynamic.howto.steps.map((step, idx) => (
+                    {(t.dynamic?.howto?.steps || []).map((step, idx) => (
                       <div key={idx} className="flex items-start gap-4 text-gray-700 dark:text-gray-300">
                         <span className="font-mono text-blue-500 dark:text-blue-400 font-bold">
                           {step.split('.')[0]}.

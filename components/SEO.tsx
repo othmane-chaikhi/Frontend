@@ -39,8 +39,7 @@ export default function SEO({
     type,
     publishedTime,
     modifiedTime,
-    author,
-    tags
+    author
   });
 
   const personStructuredData = generatePersonStructuredData();
@@ -49,9 +48,9 @@ export default function SEO({
   return (
     <Head>
       {/* Basic Meta Tags */}
-      <title>{metadata.title}</title>
-      <meta name="description" content={metadata.description} />
-      <meta name="keywords" content={metadata.keywords?.join(', ')} />
+      <title>{metadata.title as string}</title>
+      <meta name="description" content={metadata.description || ''} />
+      <meta name="keywords" content={Array.isArray(metadata.keywords) ? metadata.keywords.join(', ') : metadata.keywords || ''} />
       <meta name="author" content={author} />
       
       {/* Robots */}
@@ -62,10 +61,10 @@ export default function SEO({
       
       {/* Open Graph */}
       <meta property="og:type" content={type} />
-      <meta property="og:title" content={metadata.openGraph?.title} />
-      <meta property="og:description" content={metadata.openGraph?.description} />
-      <meta property="og:url" content={metadata.openGraph?.url} />
-      <meta property="og:image" content={metadata.openGraph?.images?.[0]?.url} />
+      <meta property="og:title" content={metadata.openGraph?.title as string} />
+      <meta property="og:description" content={metadata.openGraph?.description || ''} />
+      <meta property="og:url" content={metadata.openGraph?.url?.toString() || ''} />
+      <meta property="og:image" content={image || ''} />
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
       <meta property="og:site_name" content="Othmane Chaikhi Portfolio" />
@@ -85,9 +84,9 @@ export default function SEO({
       
       {/* Twitter Card */}
       <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:title" content={metadata.twitter?.title} />
-      <meta name="twitter:description" content={metadata.twitter?.description} />
-      <meta name="twitter:image" content={metadata.twitter?.images?.[0]} />
+      <meta name="twitter:title" content={metadata.twitter?.title as string} />
+      <meta name="twitter:description" content={metadata.twitter?.description || ''} />
+      <meta name="twitter:image" content={image || ''} />
       <meta name="twitter:creator" content="@othmane_chaikhi" />
       
       {/* Structured Data */}
