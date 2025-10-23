@@ -9,6 +9,8 @@ import Loading from '@/components/Loading';
 import { formatDate, formatRelativeTime, getMediaUrl, getYouTubeEmbedUrl } from '@/lib/utils';
 import { isAuthenticated, getUser } from '@/lib/auth';
 import { FiCalendar, FiUser, FiMessageCircle } from 'react-icons/fi';
+import SEOHead from '@/components/SEOHead';
+import { generateMetadata } from '@/lib/seo';
 
 interface PageProps {
   params: {
@@ -82,6 +84,23 @@ export default function PostDetailPage({ params }: PageProps) {
 
   return (
     <div className="container-custom py-12">
+      {post && (
+        <SEOHead
+          title={post.title}
+          description={post.excerpt || post.content.substring(0, 160)}
+          url={`/blog/${post.id}`}
+          image={post.media_url}
+          publishedTime={post.created_at}
+          modifiedTime={post.updated_at}
+          author="Othmane Chaikhi"
+          tags={post.tags || []}
+          breadcrumbs={[
+            { name: 'Accueil', url: '/' },
+            { name: 'Blog', url: '/blog' },
+            { name: post.title, url: `/blog/${post.id}` }
+          ]}
+        />
+      )}
       <article className="max-w-4xl mx-auto">
         {/* Header */}
         <div className="mb-8">

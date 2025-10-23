@@ -13,6 +13,7 @@ import {
   FiHeart, FiWind
 } from 'react-icons/fi';
 import Image from 'next/image';
+import { generateMetadata, pageSEO } from '@/lib/seo';
 
 // Compétences avec pourcentages
 const skills = [

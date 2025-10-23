@@ -5,6 +5,15 @@ import {
   FiBook, FiCode, FiTool, FiZap, FiCheckCircle, 
   FiAlertCircle, FiLayers, FiServer, FiMonitor, FiHeart, FiUsers, FiTarget
 } from 'react-icons/fi';
+import { generateMetadata, pageSEO } from '@/lib/seo';
+
+// SEO metadata for docs page
+export const metadata = generateMetadata({
+  title: pageSEO.docs.title,
+  description: pageSEO.docs.description,
+  keywords: pageSEO.docs.keywords,
+  url: '/docs',
+});
 
 type Language = 'fr' | 'en' | 'ar';
 

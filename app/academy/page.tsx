@@ -10,6 +10,15 @@ import {
 } from 'react-icons/fi';
 import { academyAPI } from '@/lib/api';
 import Loading from '@/components/Loading';
+import { generateMetadata, pageSEO } from '@/lib/seo';
+
+// SEO metadata for academy page
+export const metadata = generateMetadata({
+  title: pageSEO.academy.title,
+  description: pageSEO.academy.description,
+  keywords: pageSEO.academy.keywords,
+  url: '/academy',
+});
 
 interface Course {
   id: number;

@@ -6,6 +6,15 @@ import { Post, PaginatedResponse } from '@/lib/types';
 import PostCard from '@/components/PostCard';
 import Loading from '@/components/Loading';
 import { FiSearch } from 'react-icons/fi';
+import { generateMetadata, pageSEO } from '@/lib/seo';
+
+// SEO metadata for blog page
+export const metadata = generateMetadata({
+  title: pageSEO.blog.title,
+  description: pageSEO.blog.description,
+  keywords: pageSEO.blog.keywords,
+  url: '/blog',
+});
 
 export default function BlogPage() {
   const [posts, setPosts] = useState<Post[]>([]);

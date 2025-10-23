@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEO Verification Tool</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .test-item {
+            margin: 10px 0;
+            padding: 10px;
+            border-left: 4px solid #ddd;
+            background: #f9f9f9;
+        }
+        .test-item.success {
+            border-left-color: #4CAF50;
+            background: #e8f5e8;
+        }
+        .test-item.error {
+            border-left-color: #f44336;
+            background: #ffeaea;
+        }
+        .test-item.warning {
+            border-left-color: #ff9800;
+            background: #fff3e0;
+        }
+        button {
+            background: #2196F3;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background: #1976D2;
+        }
+        .url-input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin: 10px 0;
+        }
+        .results {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🧪 SEO Verification Tool</h1>
+        <p>Use this tool to test your SEO optimization locally.</p>
+        
+        <div>
+            <label for="url">Test URL:</label>
+            <input type="text" id="url" class="url-input" value="http://localhost:3000" placeholder="Enter URL to test">
+        </div>
+        
+        <div>
+            <button onclick="testSEO()">🔍 Test SEO</button>
+            <button onclick="testAllPages()">📄 Test All Pages</button>
+            <button onclick="clearResults()">🗑️ Clear Results</button>
+        </div>
+        
+        <div id="results" class="results"></div>
+    </div>
+
+    <script>
+        async function testSEO() {
+            const url = document.getElementById('url').value;
+            const resultsDiv = document.getElementById('results');
+            
+            if (!url) {
+                alert('Please enter a URL to test');
+                return;
+            }
+            
+            resultsDiv.innerHTML = '<div class="test-item">🔄 Testing SEO for: ' + url + '</div>';
+            
+            try {
+                const response = await fetch(url);
+                const html = await response.text();
+                
+                const tests = [
+                    {
+                        name: 'Title Tag',
+                        test: () => /<title>.*<\/title>/i.test(html),
+                        message: 'Page has a title tag'
+                    },
+                    {
+                        name: 'Meta Description',
+                        test: () => /<meta name="description"/i.test(html),
+                        message: 'Page has meta description'
+                    },
+                    {
+                        name: 'Open Graph Title',
+                        test: () => /<meta property="og:title"/i.test(html),
+                        message: 'Page has Open Graph title'
+                    },
+                    {
+                        name: 'Open Graph Description',
+                        test: () => /<meta property="og:description"/i.test(html),
+                        message: 'Page has Open Graph description'
+                    },
+                    {
+                        name: 'Twitter Card',
+                        test: () => /<meta name="twitter:card"/i.test(html),
+                        message: 'Page has Twitter card'
+                    },
+                    {
+                        name: 'Structured Data',
+                        test: () => /<script type="application\/ld\+json"/i.test(html),
+                        message: 'Page has structured data (JSON-LD)'
+                    },
+                    {
+                        name: 'Canonical URL',
+                        test: () => /<link rel="canonical"/i.test(html),
+                        message: 'Page has canonical URL'
+                    },
+                    {
+                        name: 'Viewport Meta',
+                        test: () => /<meta name="viewport"/i.test(html),
+                        message: 'Page has viewport meta tag'
+                    }
+                ];
+                
+                let resultsHTML = '<h3>📊 SEO Test Results:</h3>';
+                
+                tests.forEach(test => {
+                    const passed = test.test();
+                    const status = passed ? 'success' : 'error';
+                    const icon = passed ? '✅' : '❌';
+                    
+                    resultsHTML += `
+                        <div class="test-item ${status}">
+                            ${icon} <strong>${test.name}:</strong> ${test.message}
+                        </div>
+                    `;
+                });
+                
+                // Count results
+                const passedTests = tests.filter(t => t.test()).length;
+                const totalTests = tests.length;
+                const score = Math.round((passedTests / totalTests) * 100);
+                
+                resultsHTML += `
+                    <div class="test-item ${score >= 80 ? 'success' : score >= 60 ? 'warning' : 'error'}">
+                        <strong>📈 SEO Score: ${score}% (${passedTests}/${totalTests} tests passed)</strong>
+                    </div>
+                `;
+                
+                resultsDiv.innerHTML = resultsHTML;
+                
+            } catch (error) {
+                resultsDiv.innerHTML = `
+                    <div class="test-item error">
+                        ❌ <strong>Error:</strong> Could not fetch ${url}. Make sure the development server is running.
+                        <br><small>Error: ${error.message}</small>
+                    </div>
+                `;
+            }
+        }
+        
+        async function testAllPages() {
+            const pages = [
+                { url: 'http://localhost:3000', name: 'Home Page' },
+                { url: 'http://localhost:3000/blog', name: 'Blog Page' },
+                { url: 'http://localhost:3000/academy', name: 'Academy Page' },
+                { url: 'http://localhost:3000/docs', name: 'Docs Page' },
+                { url: 'http://localhost:3000/sitemap.xml', name: 'Sitemap' },
+                { url: 'http://localhost:3000/robots.txt', name: 'Robots.txt' }
+            ];
+            
+            const resultsDiv = document.getElementById('results');
+            resultsDiv.innerHTML = '<h3>🔄 Testing All Pages...</h3>';
+            
+            for (const page of pages) {
+                try {
+                    const response = await fetch(page.url);
+                    const status = response.ok ? '✅' : '❌';
+                    resultsDiv.innerHTML += `
+                        <div class="test-item ${response.ok ? 'success' : 'error'}">
+                            ${status} <strong>${page.name}:</strong> ${page.url} (Status: ${response.status})
+                        </div>
+                    `;
+                } catch (error) {
+                    resultsDiv.innerHTML += `
+                        <div class="test-item error">
+                            ❌ <strong>${page.name}:</strong> ${page.url} (Error: ${error.message})
+                        </div>
+                    `;
+                }
+            }
+        }
+        
+        function clearResults() {
+            document.getElementById('results').innerHTML = '';
+        }
+        
+        // Auto-test on page load
+        window.onload = function() {
+            setTimeout(() => {
+                testSEO();
+            }, 1000);
+        };
+    </script>
+</body>
+</html>
